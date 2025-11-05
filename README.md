@@ -19,3 +19,4 @@
 5. 送出前顯示確認視窗（modal），確認後儲存在 localStorage
 6. 深色模式切換、動態動畫、完整 RWD
 ## GitHub Pages 網址
+https://wangpeiyi9.github.io/114_web_midterm_project/
