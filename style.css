@@ -1,0 +1,89 @@
+:root{
+  --primary:#1f6feb;
+  --bg:#f8f9fa;
+  --card:#ffffff;
+  --text:#222;
+}
+
+body.dark-mode{
+  --primary:#7aa2ff;
+  --bg:#0f1720;
+  --card:#0b1220;
+  --text:#dde7ff;
+}
+
+*{box-sizing:border-box}
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
+  min-height:100vh;
+}
+
+/* banner */
+.banner{
+  height:180px;
+  background: linear-gradient(90deg, rgba(31,111,235,0.85), rgba(20,120,97,0.85));
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:0.25rem;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+  animation: bannerEntrance 800ms ease;
+}
+
+@keyframes bannerEntrance{
+  from { transform: translateY(-6px); opacity:0; }
+  to { transform: translateY(0); opacity:1; }
+}
+
+/* 卡片 */
+.card{
+  background: var(--card);
+  color: var(--text);
+  border: none;
+  border-radius: 0.6rem;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.card:hover{ transform: translateY(-4px); box-shadow: 0 10px 30px rgba(2,6,23,0.08); }
+
+/* 時段按鈕 */
+#timeslotContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+#timeslotContainer button{
+  transition: transform 120ms ease, opacity 120ms ease, background-color 200ms ease;
+}
+#timeslotContainer button:active{ transform: scale(0.98); }
+
+/* 點選後變滿版主色 */
+#timeslotContainer button.selected {
+  background-color: var(--primary);
+  color: #fff !important;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(31,111,235,0.25);
+  transform: none;
+}
+
+/* disabled 樣式 */
+#timeslotContainer button:disabled{
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* 小螢幕改良 */
+@media (max-width:576px){
+  #timeslotContainer{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #timeslotContainer button{ font-size: 14px; padding: .35rem .5rem; }
+}
+
+/* Alert box transition */
+#alertBox.show{
+  animation: alertIn 360ms ease;
+}
+@keyframes alertIn{ from {opacity:0; transform: translateY(-8px)} to {opacity:1; transform: none} }
